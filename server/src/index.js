@@ -3,11 +3,10 @@ const mongoose = require("mongoose");
 const DB_NAME = require("./constants");
 const dotenv = require("dotenv");
 const path = require("path");
+const app = require("./app");
 
-//express app
-const app = express();
+//env config
 dotenv.config({ path: path.resolve(__dirname, "../../.env") });
-app.use(express.json());
 
 //database connectivity
 (async () => {
@@ -20,8 +19,6 @@ app.use(express.json());
     })
     .catch((err) => console.log(err));
 })();
-
-//routes
 
 //default error handler
 function errorHandler(err, req, res, next) {
