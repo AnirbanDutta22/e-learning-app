@@ -19,11 +19,3 @@ dotenv.config({ path: path.resolve(__dirname, "../../.env") });
     })
     .catch((err) => console.log(err));
 })();
-
-//default error handler
-function errorHandler(err, req, res, next) {
-  if (res.headersSent) {
-    return next(err);
-  }
-  res.status(500).json({ error: err });
-}
